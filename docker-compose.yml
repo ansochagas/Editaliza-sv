@@ -7,24 +7,26 @@ services:
       dockerfile: Dockerfile
     container_name: editaliza-production
     restart: unless-stopped
-    # A porta não precisa ser exposta ao host, o Nginx se comunicará pela rede interna
-    # ports:
-    #   - "3000:3000" 
     env_file:
-      - .env # Carrega as variáveis de ambiente do arquivo .env
+      - .env
     environment:
       - NODE_ENV=production
       - PORT=3000
       - DATABASE_PATH=/app/data/database.db
       - REDIS_HOST=redis
       - REDIS_PORT=6379
-      # - REDIS_PASSWORD=${REDIS_PASSWORD} # Já carregado pelo env_file
     volumes:
       - editaliza-data:/app/data
       - editaliza-logs:/app/logs
     secrets:
-      - session_secret
-      - jwt_secret
+      - source: session_secret
+        target: session_secret
+        uid: '1001'
+        gid: '1001'
+      - source: jwt_secret
+        target: jwt_secret
+        uid: '1001'
+        gid: '1001'
     networks:
       - editaliza-network
     healthcheck:
@@ -45,7 +47,7 @@ services:
     restart: unless-stopped
     command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
     env_file:
-      - .env # Carrega a senha do Redis
+      - .env
     volumes:
       - redis-data:/data
     networks:
@@ -65,15 +67,13 @@ services:
       - "443:443"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      # Mapeia os certificados SSL gerados pelo Certbot no host para o container
       - ./ssl:/etc/letsencrypt:ro
-      # Mapeia a pasta para o desafio do Certbot
       - ./certbot-www:/var/www/certbot
     networks:
       - editaliza-network
     depends_on:
       editaliza-app:
-        condition: service_healthy # O Nginx só iniciará APÓS o app estar saudável
+        condition: service_healthy
 
 volumes:
   editaliza-data:
