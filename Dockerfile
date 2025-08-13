@@ -41,6 +41,9 @@ COPY --chown=editaliza:nodejs middleware.js ./
 COPY --chown=editaliza:nodejs performance_middleware.js ./
 COPY --chown=editaliza:nodejs performance_benchmark.js ./
 
+# Copy source folder
+COPY --chown=editaliza:nodejs src/ ./src/
+
 # Copy static files
 COPY --chown=editaliza:nodejs *.html ./
 COPY --chown=editaliza:nodejs css/ ./css/
