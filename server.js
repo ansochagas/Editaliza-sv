@@ -91,6 +91,8 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",") || [
   "http://localhost:3000",
   "https://editaliza.com.br",
   "https://www.editaliza.com.br",
+  "http://editaliza.com.br",
+  "http://www.editaliza.com.br",
 ];
 app.use(
   cors({
