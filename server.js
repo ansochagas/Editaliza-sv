@@ -97,15 +97,9 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",") || [
 app.use(
   cors({
     origin: function (origin, callback) {
-      // --- DEBUG LOG ---
-      console.log(`[CORS DEBUG] Received Origin: ${origin}`);
-      console.log(`[CORS DEBUG] Allowed Origins: ${JSON.stringify(allowedOrigins)}`);
-      // --- END DEBUG LOG ---
+      // Permitir requisições sem origin (como mobile apps, Postman, ou acesso direto)
+      if (!origin) return callback(null, true);
 
-      // CORREÇÃO: Ser mais restritivo mesmo em desenvolvimento
-      if (!origin && process.env.NODE_ENV === "development") {
-        return callback(null, true);
-      }
       if (allowedOrigins.indexOf(origin) !== -1) {
         callback(null, true);
       } else {
