@@ -49,9 +49,13 @@ COPY --chown=editaliza:nodejs *.html ./
 COPY --chown=editaliza:nodejs css/ ./css/
 COPY --chown=editaliza:nodejs js/ ./js/
 
+# Copy and set up the entrypoint script
+COPY --chown=editaliza:nodejs entrypoint.sh .
+RUN chmod +x ./entrypoint.sh
+
 # Create directories for application data
-RUN mkdir -p /app/data /app/logs && \
-    chown -R editaliza:nodejs /app/data /app/logs
+# A permissao sera ajustada pelo entrypoint, mas criamos a pasta aqui
+RUN mkdir -p /app/data /app/logs
 
 # Set environment variables
 ENV NODE_ENV=production
@@ -70,8 +74,8 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
 # Switch to non-root user
 USER editaliza
 
-# Use dumb-init to handle signals properly
-ENTRYPOINT ["dumb-init", "--"]
+# Use the entrypoint script to start the container
+ENTRYPOINT ["/app/entrypoint.sh"]
 
-# Start application
-CMD ["node", "server.js"]
+# Default command to be executed by the entrypoint
+CMD ["dumb-init", "--", "node", "server.js"]
