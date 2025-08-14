@@ -20,8 +20,8 @@ RUN npm ci --only=production && npm cache clean --force
 # Stage 2: Production image
 FROM node:18-alpine AS production
 
-# Install dumb-init for proper signal handling
-RUN apk add --no-cache dumb-init sqlite
+# Install dumb-init, sqlite, and su-exec for privilege dropping
+RUN apk add --no-cache dumb-init sqlite su-exec
 
 # Create non-root user
 RUN addgroup -g 1001 -S nodejs && \
@@ -49,12 +49,11 @@ COPY --chown=editaliza:nodejs *.html ./
 COPY --chown=editaliza:nodejs css/ ./css/
 COPY --chown=editaliza:nodejs js/ ./js/
 
-# Copy and set up the entrypoint script
-COPY --chown=editaliza:nodejs entrypoint.sh .
+# Copy and set up the entrypoint script. It must be owned by root.
+COPY --chown=root:root entrypoint.sh .
 RUN chmod +x ./entrypoint.sh
 
 # Create directories for application data
-# A permissao sera ajustada pelo entrypoint, mas criamos a pasta aqui
 RUN mkdir -p /app/data /app/logs
 
 # Set environment variables
@@ -71,8 +70,8 @@ EXPOSE 3000
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
     CMD node -e "const http=require('http');http.get('http://localhost:3000/health',(r)=>{process.exit(r.statusCode===200?0:1)}).on('error',()=>process.exit(1))"
 
-# Switch to non-root user
-USER editaliza
+# DO NOT switch user here. The entrypoint script will do it.
+# USER editaliza
 
 # Use the entrypoint script to start the container
 ENTRYPOINT ["/app/entrypoint.sh"]
