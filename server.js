@@ -97,6 +97,11 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",") || [
 app.use(
   cors({
     origin: function (origin, callback) {
+      // --- DEBUG LOG ---
+      console.log(`[CORS DEBUG] Received Origin: ${origin}`);
+      console.log(`[CORS DEBUG] Allowed Origins: ${JSON.stringify(allowedOrigins)}`);
+      // --- END DEBUG LOG ---
+
       // CORREÇÃO: Ser mais restritivo mesmo em desenvolvimento
       if (!origin && process.env.NODE_ENV === "development") {
         return callback(null, true);
