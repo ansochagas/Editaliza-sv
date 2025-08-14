@@ -59,7 +59,7 @@ RUN mkdir -p /app/data /app/logs
 # Set environment variables
 ENV NODE_ENV=production
 ENV PORT=3000
-ENV DATABASE_PATH=/app/data/database.db
+ENV DATABASE_PATH=/app/db.sqlite
 ENV SESSION_SECRET_FILE=/run/secrets/session_secret
 ENV JWT_SECRET_FILE=/run/secrets/jwt_secret
 

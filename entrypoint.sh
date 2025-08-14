@@ -3,9 +3,11 @@
 set -e
 
 # Este script agora roda como root
-echo "Entrypoint: Running as root. Fixing volume permissions..."
+echo "Entrypoint: Running as root. Fixing permissions..."
 
-# Ajusta a propriedade das pastas para o usuário da aplicação
+# Dá ao usuário 'editaliza' permissão para escrever no diretório /app
+# para que o banco de dados db.sqlite possa ser criado.
+chown editaliza:nodejs /app
 chown -R editaliza:nodejs /app/data /app/logs
 
 echo "Entrypoint: Permissions fixed."
