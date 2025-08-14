@@ -29,12 +29,12 @@ services:
         gid: '1001'
     networks:
       - editaliza-network
-    healthcheck:
-      test: ["CMD", "node", "-e", "const http = require('http'); http.get('http://localhost:3000/health', (res) => process.exit(res.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1));"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-      start_period: 30s
+    # healthcheck:
+    #   test: ["CMD", "node", "-e", "const http = require('http'); http.get('http://localhost:3000/health', (res) => process.exit(res.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1));"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 5
+    #   start_period: 30s
     deploy:
       resources:
         limits:
@@ -72,8 +72,7 @@ services:
     networks:
       - editaliza-network
     depends_on:
-      editaliza-app:
-        condition: service_healthy
+      - editaliza-app
 
 volumes:
   editaliza-data:

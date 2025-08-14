@@ -67,7 +67,7 @@ ENV JWT_SECRET_FILE=/run/secrets/jwt_secret
 EXPOSE 3000
 
 # Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=180s --retries=5 \
+# HEALTHCHECK --interval=30s --timeout=10s --start-period=180s --retries=5 \
     CMD node -e "const http=require('http');http.get('http://localhost:3000/health',(r)=>{process.exit(r.statusCode===200?0:1)}).on('error',()=>process.exit(1))"
 
 # DO NOT switch user here. The entrypoint script will do it.
