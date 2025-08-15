@@ -23,7 +23,7 @@ const addColumnIfNotExists = (tableName, columnName, columnDef) => {
                     console.log(`Adicionando coluna '${columnName}' à tabela '${validatedTableName}'...`);
                     
                     // Validar definição da coluna também
-                    if (!/^[a-zA-Z0-9_\s()]+$/.test(columnDef)) {
+                    if (!/^[a-zA-Z0-9_\s()'"-]+$/.test(columnDef)) {
                         return reject(new Error('Definição de coluna contém caracteres inválidos'));
                     }
                     

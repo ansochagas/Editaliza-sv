@@ -20,8 +20,8 @@ RUN npm ci --only=production && npm cache clean --force
 # Stage 2: Production image
 FROM node:18-alpine AS production
 
-# Install dumb-init for proper signal handling
-RUN apk add --no-cache dumb-init sqlite
+# Install dumb-init, sqlite, and su-exec for privilege dropping
+RUN apk add --no-cache dumb-init sqlite su-exec
 
 # Create non-root user
 RUN addgroup -g 1001 -S nodejs && \
@@ -41,19 +41,25 @@ COPY --chown=editaliza:nodejs middleware.js ./
 COPY --chown=editaliza:nodejs performance_middleware.js ./
 COPY --chown=editaliza:nodejs performance_benchmark.js ./
 
+# Copy source folder
+COPY --chown=editaliza:nodejs src/ ./src/
+
 # Copy static files
 COPY --chown=editaliza:nodejs *.html ./
 COPY --chown=editaliza:nodejs css/ ./css/
 COPY --chown=editaliza:nodejs js/ ./js/
 
+# Copy and set up the entrypoint script. It must be owned by root.
+COPY --chown=root:root entrypoint.sh .
+RUN chmod +x ./entrypoint.sh
+
 # Create directories for application data
-RUN mkdir -p /app/data /app/logs && \
-    chown -R editaliza:nodejs /app/data /app/logs
+RUN mkdir -p /app/data /app/logs
 
 # Set environment variables
 ENV NODE_ENV=production
 ENV PORT=3000
-ENV DATABASE_PATH=/app/data/database.db
+ENV DATABASE_PATH=/app/db.sqlite
 ENV SESSION_SECRET_FILE=/run/secrets/session_secret
 ENV JWT_SECRET_FILE=/run/secrets/jwt_secret
 
@@ -61,14 +67,14 @@ ENV JWT_SECRET_FILE=/run/secrets/jwt_secret
 EXPOSE 3000
 
 # Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+# HEALTHCHECK --interval=30s --timeout=10s --start-period=180s --retries=5 \
     CMD node -e "const http=require('http');http.get('http://localhost:3000/health',(r)=>{process.exit(r.statusCode===200?0:1)}).on('error',()=>process.exit(1))"
 
-# Switch to non-root user
-USER editaliza
+# DO NOT switch user here. The entrypoint script will do it.
+# USER editaliza
 
-# Use dumb-init to handle signals properly
-ENTRYPOINT ["dumb-init", "--"]
+# Use the entrypoint script to start the container
+ENTRYPOINT ["/app/entrypoint.sh"]
 
-# Start application
-CMD ["node", "server.js"]
+# Default command to be executed by the entrypoint
+CMD ["dumb-init", "--", "node", "server.js"]

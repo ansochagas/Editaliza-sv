@@ -11,6 +11,7 @@ const crypto = require('crypto');
 const authRepository = require('../repositories/authRepository');
 const { sanitizeEmail, sanitizeInput } = require('../utils/sanitizer');
 const { securityLog, createSafeError, checkUserRateLimit } = require('../utils/security');
+const { sendPasswordResetEmail } = require('./emailService'); // Importar serviço de e-mail
 
 /**
  * Register a new user
@@ -192,11 +193,11 @@ const requestPasswordReset = async (email, req) => {
         await authRepository.setResetToken(user.id, token, expires);
         
         securityLog('password_reset_requested', { email: sanitizedEmail, userId: user.id }, user.id, req);
+
+        // Enviar o e-mail de redefinição de senha
+        await sendPasswordResetEmail(user.email, token);
         
-        // In development, log the reset link
-        if (process.env.NODE_ENV !== 'production') {
-            console.log(`SIMULAÇÃO DE E-MAIL: Link de recuperação para ${user.email}: http://localhost:3000/reset-password.html?token=${token}`);
-        }
+        
     }
     
     // Always return success message to prevent email enumeration
