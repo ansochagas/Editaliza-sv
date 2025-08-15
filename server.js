@@ -56,6 +56,11 @@ try {
 }
 
 const app = express();
+
+// Confiar no primeiro proxy reverso (Nginx) para obter o IP real do cliente
+// Isso é crucial para a segurança (rate limiting) e para logs precisos.
+app.set('trust proxy', 1);
+
 // Servir arquivos estáticos (HTML, CSS, JS)
 app.use(express.static(__dirname));
 
