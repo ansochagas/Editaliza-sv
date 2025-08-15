@@ -15,10 +15,8 @@ const path = require("path");
 const fs = require("fs");
 // Import modular Passport configuration
 const passport = require("./src/config/passport");
-require("dotenv").config();
-console.log(`DEBUG: SENDGRID_API_KEY is set: ${!!process.env.SENDGRID_API_KEY}`);
-console.log(`DEBUG: SENDGRID_FROM_EMAIL is set: ${!!process.env.SENDGRID_FROM_EMAIL}`);
-console.log(`DEBUG: FRONTEND_URL is set: ${!!process.env.FRONTEND_URL}`);
+
+
 
 // Carregar secrets do Docker secrets e definir nas variáveis de ambiente
 if (process.env.SESSION_SECRET_FILE) {
