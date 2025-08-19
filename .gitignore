@@ -1,0 +1,114 @@
+# Dependencies
+/node_modules
+
+# Environment variables - CRÍTICO: NUNCA REMOVA
+.env
+.env*
+!.env.example
+.env.local
+.env.production
+.env.development
+*.env
+
+# Chaves e certificados - SEGURANÇA MÁXIMA
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+private.key
+public.key
+id_rsa*
+*.ppk
+JWT_SECRET*
+*_SECRET*
+
+# Databases & Sessions
+*.db
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+sessions.db
+db_backup.sqlite
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output & Artifacts
+/dist
+/build
+/coverage
+
+# OS-generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Editor/IDE directories
+.vscode/
+.idea/
+.claude/
+
+# Temporary files and backups
+.tmp.*
+*.tmp
+*~
+*.bak
+*_backup_*.js
+/backup_*/
+/uploads/
+
+# Special Windows files to ignore
+nul
+
+# Gemini-specific files
+.gemini*
+
+# Organized folders for development
+/temp/
+/docs/archive/
+/tests/legacy/
+
+# Backup and temporary files
+home_backup.html
+*_backup.*
+temp_*.js
+debug-*.html
+test-*.html
+teste-*.html
+footer-direto.html
+
+# Migration and audit files
+backup-before-cackto-*/
+backups/
+database.sqlite.backup*
+server.js.backup*
+migration/
+setup-kiwify/
+*.backup
+*_AUDIT*.md
+*_MIGRATION*.md
+*_REPORT*.md
+RELATORIO_*.md
+GUIA_*.md
+CORRECOES_*.md
+test_*.js
+debug_*.js
+audit_*.js
+validate_*.js
+create_*.js
+fix-*.js
+migrate-*.js
+run-migration*.js
+simple-*.js
+schedule_*.js
+schedule_*.json

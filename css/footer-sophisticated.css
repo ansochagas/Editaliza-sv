@@ -1,0 +1,296 @@
+/* ============================================
+   RODAPÉ SOFISTICADO - EDITALIZA
+   Design Premium com Gradientes Suaves
+   ============================================ */
+
+/* ESTRUTURA PRINCIPAL - DESIGN PREMIUM */
+body .editaliza-footer-refatorado .footer-main-section,
+html body .editaliza-footer-refatorado .footer-main-section {
+    /* Gradiente sofisticado em tons de cinza escuro */
+    background: linear-gradient(180deg, 
+        #1a1f2e 0%, 
+        #151821 50%, 
+        #0f111a 100%) !important;
+    
+    /* Efeito de vidro sutil */
+    position: relative !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    padding: 48px 0 32px 0 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Overlay decorativo sutil */
+body .editaliza-footer-refatorado .footer-main-section::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 1px !important;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(59, 130, 246, 0.3) 50%, 
+        transparent 100%) !important;
+    animation: shimmer 3s ease-in-out infinite !important;
+}
+
+@keyframes shimmer {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* SEÇÃO COPYRIGHT - ELEGANTE */
+body .editaliza-footer-refatorado .footer-copyright-section,
+html body .editaliza-footer-refatorado .footer-copyright-section {
+    background: linear-gradient(90deg, 
+        #0a0c14 0%, 
+        #0f111a 50%, 
+        #0a0c14 100%) !important;
+    border-top: 1px solid rgba(59, 130, 246, 0.1) !important;
+    padding: 20px 0 !important;
+    position: relative !important;
+}
+
+/* LOGO REFINADO */
+body .editaliza-footer-refatorado .footer-logo,
+html body .editaliza-footer-refatorado .footer-logo {
+    background: linear-gradient(135deg, 
+        rgba(59, 130, 246, 0.1) 0%, 
+        rgba(59, 130, 246, 0.05) 100%) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(59, 130, 246, 0.2) !important;
+    border-radius: 12px !important;
+    padding: 10px 16px !important;
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+body .editaliza-footer-refatorado .footer-logo:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 
+        0 8px 30px rgba(59, 130, 246, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+}
+
+/* TÍTULOS DAS SEÇÕES - REFINADOS */
+body .editaliza-footer-refatorado .footer-nav-title,
+html body .editaliza-footer-refatorado .footer-nav-title {
+    color: #FFFFFF !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    margin-bottom: 16px !important;
+    position: relative !important;
+    padding-bottom: 8px !important;
+}
+
+/* Linha decorativa sob títulos */
+body .editaliza-footer-refatorado .footer-nav-title::after,
+html body .editaliza-footer-refatorado .footer-nav-title::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 32px !important;
+    height: 2px !important;
+    background: linear-gradient(90deg, 
+        #3b82f6 0%, 
+        #2563eb 100%) !important;
+    border-radius: 2px !important;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3) !important;
+}
+
+/* DESCRIÇÃO ELEGANTE */
+body .editaliza-footer-refatorado .footer-description,
+html body .editaliza-footer-refatorado .footer-description {
+    color: #94A3B8 !important;
+    font-size: 0.875rem !important;
+    line-height: 1.6 !important;
+    font-weight: 400 !important;
+    max-width: 320px !important;
+    margin-top: 12px !important;
+}
+
+/* LINKS DE NAVEGAÇÃO - SOFISTICADOS */
+body .editaliza-footer-refatorado .footer-nav-link,
+html body .editaliza-footer-refatorado .footer-nav-link {
+    color: #CBD5E1 !important;
+    font-size: 0.875rem !important;
+    font-weight: 400 !important;
+    transition: all 0.2s ease !important;
+    position: relative !important;
+    padding-left: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+body .editaliza-footer-refatorado .footer-nav-link::before {
+    content: '' !important;
+    position: absolute !important;
+    left: -12px !important;
+    width: 4px !important;
+    height: 4px !important;
+    background: #3b82f6 !important;
+    border-radius: 50% !important;
+    opacity: 0 !important;
+    transition: all 0.2s ease !important;
+}
+
+body .editaliza-footer-refatorado .footer-nav-link:hover,
+html body .editaliza-footer-refatorado .footer-nav-link:hover {
+    color: #60A5FA !important;
+    transform: translateX(8px) !important;
+    text-shadow: 0 0 20px rgba(96, 165, 250, 0.3) !important;
+}
+
+body .editaliza-footer-refatorado .footer-nav-link:hover::before {
+    opacity: 1 !important;
+    left: -8px !important;
+}
+
+/* REDES SOCIAIS - DESIGN PREMIUM */
+body .editaliza-footer-refatorado .social-link,
+html body .editaliza-footer-refatorado .social-link {
+    width: 40px !important;
+    height: 40px !important;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.05) 0%, 
+        rgba(255, 255, 255, 0.02) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+body .editaliza-footer-refatorado .social-link::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: radial-gradient(circle, 
+        rgba(59, 130, 246, 0.4) 0%, 
+        transparent 70%) !important;
+    transform: translate(-50%, -50%) !important;
+    transition: all 0.3s ease !important;
+}
+
+body .editaliza-footer-refatorado .social-link:hover {
+    background: linear-gradient(135deg, 
+        rgba(59, 130, 246, 0.2) 0%, 
+        rgba(37, 99, 235, 0.15) 100%) !important;
+    border-color: rgba(59, 130, 246, 0.4) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 
+        0 10px 25px rgba(59, 130, 246, 0.2),
+        0 4px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+body .editaliza-footer-refatorado .social-link:hover::before {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+body .editaliza-footer-refatorado .social-link svg,
+html body .editaliza-footer-refatorado .social-link svg {
+    width: 20px !important;
+    height: 20px !important;
+    color: #CBD5E1 !important;
+    z-index: 1 !important;
+    position: relative !important;
+    transition: all 0.3s ease !important;
+}
+
+body .editaliza-footer-refatorado .social-link:hover svg {
+    color: #FFFFFF !important;
+    transform: scale(1.1) !important;
+}
+
+/* COPYRIGHT TEXT - REFINADO */
+body .editaliza-footer-refatorado .footer-copyright-text,
+html body .editaliza-footer-refatorado .footer-copyright-text {
+    color: #64748B !important;
+    font-size: 0.813rem !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.01em !important;
+}
+
+/* LINKS LEGAIS - ELEGANTES */
+body .editaliza-footer-refatorado .footer-legal-link,
+html body .editaliza-footer-refatorado .footer-legal-link {
+    color: #64748B !important;
+    font-size: 0.813rem !important;
+    position: relative !important;
+    transition: all 0.2s ease !important;
+    padding: 0 12px !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+body .editaliza-footer-refatorado .footer-legal-link:last-child {
+    border-right: none !important;
+}
+
+body .editaliza-footer-refatorado .footer-legal-link:first-child {
+    padding-left: 0 !important;
+}
+
+body .editaliza-footer-refatorado .footer-legal-link:hover {
+    color: #94A3B8 !important;
+    text-shadow: 0 0 10px rgba(148, 163, 184, 0.3) !important;
+}
+
+/* CONTAINER COM PADDING REFINADO */
+body .editaliza-footer-refatorado .footer-container,
+html body .editaliza-footer-refatorado .footer-container {
+    max-width: 1280px !important;
+    margin: 0 auto !important;
+    padding: 0 24px !important;
+}
+
+/* GRID MAIS ESPAÇOSO */
+body .editaliza-footer-refatorado .footer-main-grid,
+html body .editaliza-footer-refatorado .footer-main-grid {
+    display: grid !important;
+    grid-template-columns: 2fr 1fr 1fr 1fr !important;
+    gap: 48px !important;
+    align-items: start !important;
+}
+
+/* ANIMAÇÃO SUAVE PARA TODOS OS ELEMENTOS */
+body .editaliza-footer-refatorado * {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* MELHORIAS PARA RESPONSIVIDADE */
+@media (max-width: 768px) {
+    body .editaliza-footer-refatorado .footer-main-section {
+        padding: 32px 0 24px 0 !important;
+    }
+    
+    body .editaliza-footer-refatorado .footer-main-grid {
+        gap: 32px !important;
+    }
+    
+    body .editaliza-footer-refatorado .footer-legal-link {
+        padding: 4px 8px !important;
+        display: block !important;
+        border-right: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        margin-bottom: 4px !important;
+    }
+    
+    body .editaliza-footer-refatorado .footer-legal-link:last-child {
+        border-bottom: none !important;
+    }
+}

@@ -1,0 +1,494 @@
+/* ===============================================
+   EDITALIZA BRAND COLOR FIXES - CRITICAL ISSUES
+   ===============================================
+   
+   FIXES:
+   1. Study session cards: WHITE backgrounds (not light blue)
+   2. Metodologia hero: Proper brand gradient
+   3. Footer: Elegant dark gray with brand accents
+   
+   BRAND COLORS:
+   - Primary Blue: #3b82f6 (refined version of #0528f2)
+   - Primary Green: #22c55e (refined version of #1ad937)
+   - Dark: #1f2937 (refined version of #0d0d0d)
+   - Gray: #6b7280 (refined version of #969696)
+   =============================================== */
+
+/* ===============================================
+   1. STUDY SESSION CARDS - WHITE BACKGROUNDS
+   =============================================== */
+
+/* Force ALL study cards to have white/very light gray backgrounds */
+html body .study-card,
+html body .session-card,
+html body .study-session-card,
+html body .bg-gradient-to-br,
+html body .glass-card,
+html body .content-card,
+html body .stats-card,
+html body [class*="study"][class*="card"],
+html body [class*="session"][class*="card"] {
+    /* Pure white background - no gradients */
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    background-image: none !important;
+    
+    /* Subtle border and shadow for definition */
+    border: 1px solid #E5E7EB !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06) !important;
+    border-radius: 12px !important;
+    
+    /* Remove any backdrop blur effects */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* Alternative for cards that need very subtle background */
+html body .study-card.subtle-bg,
+html body .session-card.subtle-bg {
+    background: #F9FAFB !important;
+    background-color: #F9FAFB !important;
+}
+
+/* Ensure card text is readable on white backgrounds */
+html body .study-card *,
+html body .session-card *,
+html body .study-session-card *,
+html body .content-card *,
+html body .stats-card * {
+    color: inherit !important;
+}
+
+/* Study card titles - dark and readable */
+html body .study-card h3,
+html body .session-card h3,
+html body .study-card .text-xl,
+html body .session-card .text-xl,
+html body .study-session-title,
+html body .session-title {
+    color: #1F2937 !important;
+    font-weight: 700 !important;
+}
+
+/* Study card descriptions */
+html body .study-card p,
+html body .session-card p,
+html body .study-card .text-sm,
+html body .session-card .text-sm {
+    color: #6B7280 !important;
+}
+
+/* ===============================================
+   2. METODOLOGIA HERO - BRAND GRADIENT
+   =============================================== */
+
+/* Replace the problematic light blue gradient with proper brand colors */
+html body section.hero-section,
+html body section:first-of-type,
+html body main > section:first-child,
+html body .hero-gradient {
+    /* Subtle gradient mixing white with brand blue */
+    background: linear-gradient(135deg, 
+        #FFFFFF 0%,           /* Pure white start */
+        #F8FAFC 20%,          /* Very light gray */
+        #EFF6FF 40%,          /* Very light blue tint */
+        #DBEAFE 60%,          /* Light blue tint */
+        #BFDBFE 80%,          /* Medium light blue */
+        #93C5FD 100%          /* Soft blue (closer to brand)  */
+    ) !important;
+    
+    position: relative !important;
+    overflow: hidden !important;
+    padding: 80px 0 !important;
+}
+
+/* Add subtle brand accent overlay */
+html body section.hero-section::before,
+html body section:first-of-type::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(59, 130, 246, 0.03) 0%, transparent 50%) !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+}
+
+/* Hero text - ensure readability */
+html body section.hero-section h1,
+html body section:first-of-type h1 {
+    color: #1F2937 !important;  /* Dark gray for contrast */
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8) !important;
+    font-weight: 800 !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+html body section.hero-section p,
+html body section:first-of-type p {
+    color: #374151 !important;  /* Medium gray for readability */
+    font-weight: 500 !important;
+    text-shadow: 0.5px 0.5px 1px rgba(255, 255, 255, 0.9) !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Hero buttons with proper brand colors */
+html body section.hero-section .btn-primary,
+html body section:first-of-type .btn-primary,
+html body section.hero-section button.btn-primary,
+html body section:first-of-type button.btn-primary {
+    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%) !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: 
+        0 4px 14px rgba(59, 130, 246, 0.3),
+        inset 0 1px 2px rgba(255, 255, 255, 0.2) !important;
+    font-weight: 600 !important;
+    padding: 14px 32px !important;
+    border-radius: 12px !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+html body section.hero-section .btn-primary:hover,
+html body section:first-of-type .btn-primary:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 
+        0 8px 25px rgba(59, 130, 246, 0.4),
+        inset 0 1px 3px rgba(255, 255, 255, 0.3) !important;
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%) !important;
+}
+
+/* Secondary button in hero */
+html body section.hero-section .btn-secondary,
+html body section:first-of-type .btn-secondary {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    color: #1F2937 !important;
+    border: 2px solid rgba(59, 130, 246, 0.2) !important;
+    box-shadow: 
+        0 2px 10px rgba(0, 0, 0, 0.05),
+        inset 0 1px 2px rgba(255, 255, 255, 0.9) !important;
+    font-weight: 600 !important;
+    padding: 14px 32px !important;
+    border-radius: 12px !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+html body section.hero-section .btn-secondary:hover,
+html body section:first-of-type .btn-secondary:hover {
+    background: rgba(255, 255, 255, 1) !important;
+    border-color: rgba(59, 130, 246, 0.4) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.1),
+        inset 0 1px 3px rgba(255, 255, 255, 1) !important;
+}
+
+/* ===============================================
+   3. FOOTER - ELEGANT DARK DESIGN
+   =============================================== */
+
+/* Main footer section - Elegant dark gray gradient */
+html body .editaliza-footer-refatorado .footer-main-section,
+html body footer .footer-main-section {
+    /* Sophisticated dark gradient with subtle brand accents */
+    background: linear-gradient(135deg, 
+        #1F2937 0%,           /* Dark gray start */
+        #374151 35%,          /* Medium dark gray */
+        #1F2937 65%,          /* Back to dark gray */
+        #111827 100%          /* Very dark gray end */
+    ) !important;
+    
+    /* Subtle brand accent border */
+    border-top: 1px solid rgba(59, 130, 246, 0.1) !important;
+    padding: 56px 0 40px 0 !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* Subtle animated accent line at top */
+html body .editaliza-footer-refatorado .footer-main-section::before,
+html body footer .footer-main-section::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 200% !important;
+    height: 1px !important;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(59, 130, 246, 0.3) 25%, 
+        rgba(34, 197, 94, 0.2) 50%,
+        rgba(59, 130, 246, 0.3) 75%,
+        transparent 100%) !important;
+    animation: slideShimmer 12s ease-in-out infinite !important;
+}
+
+@keyframes slideShimmer {
+    0%, 20% { left: -100%; }
+    80%, 100% { left: 100%; }
+}
+
+/* Copyright section - Darker elegant background */
+html body .editaliza-footer-refatorado .footer-copyright-section,
+html body footer .footer-copyright-section {
+    background: linear-gradient(90deg, 
+        #111827 0%, 
+        #1F2937 50%, 
+        #111827 100%) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+    padding: 24px 0 !important;
+}
+
+/* Logo section - Clean white card */
+html body .editaliza-footer-refatorado .footer-logo,
+html body footer .footer-logo {
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 12px 16px !important;
+    background: #FFFFFF !important;
+    backdrop-filter: none !important;
+    border-radius: 10px !important;
+    width: fit-content !important;
+    margin: 0 0 16px 0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Footer navigation titles - Clean white */
+html body .editaliza-footer-refatorado .footer-nav-title,
+html body footer .footer-nav-title,
+html body footer h4,
+html body footer h3 {
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    letter-spacing: 0.025em !important;
+    text-transform: uppercase !important;
+    margin-bottom: 20px !important;
+    position: relative !important;
+    padding-bottom: 8px !important;
+}
+
+/* Elegant underline accent - using brand blue */
+html body .editaliza-footer-refatorado .footer-nav-title::after,
+html body footer .footer-nav-title::after,
+html body footer h4::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 32px !important;
+    height: 2px !important;
+    background: linear-gradient(90deg, 
+        #3B82F6 0%, 
+        #60A5FA 100%) !important;
+    border-radius: 2px !important;
+}
+
+/* Footer links - Light gray with brand accent on hover */
+html body .editaliza-footer-refatorado .footer-nav-link,
+html body footer .footer-nav-link,
+html body footer a:not(.social-link) {
+    color: #D1D5DB !important;
+    font-size: 0.875rem !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    position: relative !important;
+    padding: 6px 0 !important;
+}
+
+html body .editaliza-footer-refatorado .footer-nav-link:hover,
+html body footer .footer-nav-link:hover,
+html body footer a:not(.social-link):hover {
+    color: #3B82F6 !important;  /* Brand blue on hover */
+    transform: translateX(4px) !important;
+}
+
+/* Footer description */
+html body .editaliza-footer-refatorado .footer-description,
+html body footer .footer-description {
+    color: #9CA3AF !important;
+    font-size: 0.875rem !important;
+    line-height: 1.6 !important;
+    margin-top: 16px !important;
+    max-width: 280px !important;
+}
+
+/* Social media links - Subtle with brand accent */
+html body .editaliza-footer-refatorado .social-link,
+html body footer .social-link {
+    width: 40px !important;
+    height: 40px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 10px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s ease !important;
+    margin: 0 4px !important;
+}
+
+html body .editaliza-footer-refatorado .social-link:hover,
+html body footer .social-link:hover {
+    background: rgba(59, 130, 246, 0.1) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2) !important;
+}
+
+html body .social-link svg,
+html body footer .social-link svg {
+    color: #9CA3AF !important;
+    width: 20px !important;
+    height: 20px !important;
+}
+
+html body .social-link:hover svg,
+html body footer .social-link:hover svg {
+    color: #3B82F6 !important;  /* Brand blue on hover */
+}
+
+/* Copyright text */
+html body .editaliza-footer-refatorado .footer-copyright-text,
+html body footer .footer-copyright-text {
+    color: #6B7280 !important;
+    font-size: 0.8rem !important;
+}
+
+/* Legal links */
+html body .editaliza-footer-refatorado .footer-legal-link,
+html body footer .footer-legal-link {
+    color: #6B7280 !important;
+    font-size: 0.8rem !important;
+    margin: 0 16px !important;
+    transition: all 0.3s ease !important;
+}
+
+html body .editaliza-footer-refatorado .footer-legal-link:hover,
+html body footer .footer-legal-link:hover {
+    color: #9CA3AF !important;
+}
+
+/* ===============================================
+   4. ADDITIONAL BRAND COLOR CONSISTENCY
+   =============================================== */
+
+/* Ensure all primary buttons use consistent brand colors */
+html body .btn-primary,
+html body button.btn-primary {
+    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%) !important;
+    color: white !important;
+    border: none !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25) !important;
+}
+
+html body .btn-primary:hover,
+html body button.btn-primary:hover {
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.35) !important;
+}
+
+/* Success/green elements use brand green */
+html body .bg-green-500,
+html body .bg-green-600,
+html body .text-green-500,
+html body .text-green-600 {
+    background-color: #22C55E !important;
+    color: #22C55E !important;
+}
+
+/* Info/blue elements use brand blue */
+html body .bg-blue-500,
+html body .bg-blue-600,
+html body .text-blue-500,
+html body .text-blue-600 {
+    background-color: #3B82F6 !important;
+    color: #3B82F6 !important;
+}
+
+/* ===============================================
+   5. ACCESSIBILITY & MOBILE RESPONSIVENESS  
+   =============================================== */
+
+/* Ensure proper contrast ratios */
+html body .study-card,
+html body .session-card {
+    color: #1F2937 !important;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    html body section.hero-section,
+    html body section:first-of-type {
+        padding: 60px 0 !important;
+    }
+    
+    html body .editaliza-footer-refatorado .footer-main-section,
+    html body footer .footer-main-section {
+        padding: 40px 0 32px 0 !important;
+    }
+    
+    html body section.hero-section .btn-primary,
+    html body section:first-of-type .btn-primary,
+    html body section.hero-section .btn-secondary,
+    html body section:first-of-type .btn-secondary {
+        padding: 12px 24px !important;
+        font-size: 0.875rem !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    html body .study-card,
+    html body .session-card {
+        border: 2px solid #000000 !important;
+        box-shadow: none !important;
+    }
+    
+    html body .footer-nav-title::after {
+        background: #000000 !important;
+    }
+}
+
+/* ===============================================
+   6. OVERRIDE PROTECTION
+   =============================================== */
+
+/* Ensure this CSS has the highest priority */
+html body .study-card[style],
+html body .session-card[style] {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+}
+
+/* Remove any problematic inline styles */
+[style*="background: linear-gradient"][class*="study"],
+[style*="background: linear-gradient"][class*="session"] {
+    background: #FFFFFF !important;
+}
+
+/* Final safety net for study cards */
+.bg-gradient-to-br.from-blue-50.to-blue-100,
+.bg-gradient-to-br.from-slate-50.to-slate-100 {
+    background: #FFFFFF !important;
+    background-image: none !important;
+}
+
+/* ===============================================
+   END OF BRAND COLOR FIXES
+   =============================================== */
